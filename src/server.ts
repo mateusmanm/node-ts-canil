@@ -10,18 +10,18 @@ dotenv.config();
 const server = express();
 
 // Mustache
-server.set('view engine', 'views');
+server.set('view engine', 'mustache');
 server.set('views', path.join(__dirname, 'views'));
 server.engine('mustache', mustache());
+
+// Pasta Publica
+server.use(express.static(path.join(__dirname, '../public')));
 
 // Rotas
 server.use(mainRoutes);
 server.use((req: Request, res: Response) => {
     res.send('Página não encontrada');
 });
-
-// Pasta Publica
-server.use(express.static(path.join(__dirname, '../public')));
 
 // Up Server
 server.listen(process.env.PORT);

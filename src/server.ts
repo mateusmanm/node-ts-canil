@@ -20,7 +20,7 @@ server.use(express.static(path.join(__dirname, '../public')));
 // Rotas
 server.use(mainRoutes);
 server.use((req: Request, res: Response) => {
-    res.send('Página não encontrada');
+    res.render('pages/404');
 });
 
 // Up Server

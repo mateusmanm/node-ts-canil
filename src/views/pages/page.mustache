@@ -2,16 +2,19 @@
 
     {{ #banner }}
     <section class="banner" style="background-image: url('images/{{ banner.background }}')">{{ banner.title }}</section>
-    <h2>Todos os animais disponíveis para adoção</h2>
+    <h2>{{ banner.title }} disponíveis para adoção</h2>
     {{ /banner }}
 
     <div class="container list">
-        <div class="item">
-            <img src="images/pastor-alemao.jpg" class="item--image" />
-            <div class="item--name">Pastor-alemão</div>
-            <div class="item--color">Cor: Amarelo e Preto</div>
-            <div class="item--genre">Gênero: Masculino</div>
-        </div>
+        {{ #pets }}
+            {{ >partials/petItem }}
+        {{ /pets }}
     </div>
+
+    {{ ^pets }}
+        <div class="container no-list">
+            <h2>Não há animais disponíveis nestas condições.</h2>
+        </div>
+    {{ /pets }}
 
 {{ >partials/footer }}

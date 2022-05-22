@@ -7,9 +7,10 @@
         "node": "16.x"
     },
     "scripts": {
+        "tsc": "tsc",
         "build": "tsc",
         "start": "node dist/server.js",
-        "postinstall": "tsc && copyfiles -u 1 src/**/*.mustache dist/",
+        "postinstall": "npm run tsc && copyfiles -u 1 src/**/*.mustache dist/",
         "dev": "ts-node-dev --watch src src/server.ts"
     },
     "repository": {
